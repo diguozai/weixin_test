@@ -9,6 +9,12 @@
 		 // https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
 		public  function postMenu($type)
 		{
+			// $str = $this->getMenuJson();
+			// $jsonobj = json_decode($str);
+			// // var_dump($jsonobj);
+			// $str1 = json_encode($jsonobj);
+			// print $str1;
+			// return ;
 			$tok = token::getToken(); 		
 			if($tok == "")
 			{
@@ -18,8 +24,12 @@
 			log::getSingleton()->writeData("token获取成功");
 			$url = sprintf(MENU_URL,$type,$tok);	
 			log::getSingleton()->writeData("menuUrl:".$url);
-			$output = curl::postUrl($url,$this->getMenuJson());
-			log::getSingleton()->writeData("menuRet:".$output);
+			$postStr = $this->getMenuJson();
+			$jsonobj = json_decode($postStr);
+			$postStr  = json_encode($jsonobj);
+			log::getSingleton()->writeData("menuRet:".$postStr);
+			$output = curl::postUrl($url,$postStr );
+			
 			$ret = json_decode($output);
 			if(isset($ret->errcode) && $ret->errcode == 0)
 			{
