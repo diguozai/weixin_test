@@ -19,7 +19,7 @@
 			//log start
 			// log::getSingleton()->writeData("getUrlRet:".var_export($ret));
 			//log end
-			if(!isset($ret->errcode))
+			if(isset($ret->errcode))
 			{
 				return "";
 			}
