@@ -16,13 +16,14 @@
 			log::getSingleton()->writeData("output:".$output);
 
 			$ret =$json_decode($output);
+			log::getSingleton()->writeData(var_dump($ret));
 			//log start
 			// log::getSingleton()->writeData("getUrlRet:".var_export($ret));
 			//log end
-			if(isset($ret->errcode))
-			{
-				return "";
-			}
+			// if(isset($ret->errcode))
+			// {
+			// 	return "";
+			// }
 			return $ret->access_token;
 			// {"access_token":"ACCESS_TOKEN","expires_in":7200}			
 
