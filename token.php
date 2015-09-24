@@ -11,6 +11,7 @@
 		public static function getToken($appid=TK_APPID,$secret=TK_SECERET)
 		{
 			$url = sprintf(TOKEN_URL,$appid,$secret);
+			log::getSingleton()->writeData("getUrlRet:".$url);
 			$output = curl::getUrl($url);
 			if(empty($output))
 				return "";
@@ -18,7 +19,7 @@
 			//log start
 			log::getSingleton()->writeData("getUrlRet:".var_export($ret));
 			//log end
-			if(isset($ret[errcode]))
+			if(!isset($ret[errcode]))
 			{
 				return "";
 			}
