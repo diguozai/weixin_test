@@ -10,6 +10,11 @@
 		public  function postMenu($type)
 		{
 			$tok = token::getToken(); 		
+			if($tok == "")
+			{
+				log::getSingleton()->writeData("token获取错误");
+				return;
+			}
 			$url = sprintf(MENU_URL,$type,$token);	
 			log::getSingleton()->writeData("menuUrl:".$url);
 			$output = curl::getUrl($url);

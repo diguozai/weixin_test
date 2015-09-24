@@ -11,9 +11,9 @@
 		public static function getToken($appid=TK_APPID,$secret=TK_SECERET)
 		{
 			$url = sprintf(TOKEN_URL,$appid,$secret);
-			log::getSingleton()->writeData("getUrlRet:".$url."\r\n");
+			log::getSingleton()->writeData("getUrlRet:".$url);
 			$output = curl::getUrl($url);
-			log::getSingleton()->writeData("output:".$output."\r\n");
+			log::getSingleton()->writeData("output:".$output);
 
 			$ret =$json_decode($output);
 			//log start

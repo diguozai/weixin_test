@@ -18,6 +18,7 @@
 			{
 				return 0;
 			}
+			$data = $data."\r\n";
 			return self::$instance->writeData($data);
 		}
 
