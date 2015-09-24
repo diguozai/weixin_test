@@ -36,7 +36,7 @@
 			curl_setopt($ci,CURLOPT_RETURNTRANSFER,1);
 
 			curl_setopt($ci, CURLOPT_POST, 1);
-			curl_setopt($ci, CURLOPT_POSTFIELDS, $post_data);
+			curl_setopt($ci, CURLOPT_POSTFIELDS, $data);
 
 			$output = curl_exec($ci);
 

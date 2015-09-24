@@ -14,9 +14,8 @@
 			log::getSingleton()->writeData("getUrlRet:".$url);
 			$output = curl::getUrl($url);
 			log::getSingleton()->writeData("output:".$output);
-
-			$ret =$json_decode($output);
-			log::getSingleton()->writeData(var_dump($ret));
+			$ret =json_decode($output);
+			// log::getSingleton()->writeData(var_dump($ret));
 			//log start
 			// log::getSingleton()->writeData("getUrlRet:".var_export($ret));
 			//log end

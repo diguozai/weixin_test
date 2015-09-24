@@ -16,9 +16,9 @@
 				return;
 			}
 			log::getSingleton()->writeData("token获取成功");
-			$url = sprintf(MENU_URL,$type,$token);	
+			$url = sprintf(MENU_URL,$type,$tok);	
 			log::getSingleton()->writeData("menuUrl:".$url);
-			$output = curl::getUrl($url);
+			$output = curl::postUrl($url,$this->getMenuJson());
 			log::getSingleton()->writeData("menuRet:".$output);
 			$ret = json_decode($output);
 			if(isset($ret->errcode) && $ret->errcode == 0)
