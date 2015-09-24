@@ -23,6 +23,7 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
             $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
             $obj = wxfactory::getobjbydata_recv($postStr);
+            $this->responseSameType($obj);
 		// $me = new menu();
 		// $me->postMenu("menu/create");
  		    
