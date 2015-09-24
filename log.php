@@ -1,5 +1,14 @@
 <?php
+	if(!defined("_LOG_PHP_"))
+	{
+		 define("_LOG_PHP_", "_log_php_");
+	}
+	else
+	{
+		return;
+	}
     include 'file.php';
+
 	class log
 	{
 

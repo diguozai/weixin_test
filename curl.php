@@ -1,5 +1,15 @@
 
 <?php
+	
+	if(!defined("_CURL_PHP_"))
+	{
+		 define("_CURL_PHP_", "__file_php_");
+	}
+	else
+	{
+		return ;
+	}
+
 	class curl
 	{
 		public static function getUrl($url,$param=null)

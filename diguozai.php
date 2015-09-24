@@ -5,7 +5,7 @@
 
 //define your token
 include dirname(__FILE__).'/log.php';
-//include dirname(__FILE__).'/menu.php';
+include dirname(__FILE__).'/menu.php';
 define("TOKEN", "diguozai");
 
 $wechatObj = new wechatCallbackapiTest();

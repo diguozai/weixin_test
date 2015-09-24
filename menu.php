@@ -1,10 +1,9 @@
 
 <?php
-	include 'file.php';
-	// include 'file.php';
-	//include 'token.php';
-	//include 'log.php';
-	define(MENU_URL,"https://api.weixin.qq.com/cgi-bin/%s?access_token=%s");
+	include dirname(__FILE__).'/file.php';
+	include dirname(__FILE__).'/token.php';
+	include dirname(__FILE__).'/log.php';
+	define("MENU_URL","https://api.weixin.qq.com/cgi-bin/%s?access_token=%s");
 	class menu
 	{
 		 // https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN

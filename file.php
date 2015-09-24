@@ -1,7 +1,7 @@
 <?php
-	if(!defined("__FILE_PHP_"))
+	if(!defined("_FILE_PHP_"))
 	{
-		 define("__FILE_PHP_", "__file_php_");
+		 define("_FILE_PHP_", "__file_php_");
 	}
 	else
 	{
