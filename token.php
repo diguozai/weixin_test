@@ -13,8 +13,8 @@
 			$url = sprintf(TOKEN_URL,$appid,$secret);
 			log::getSingleton()->writeData("getUrlRet:".$url);
 			$output = curl::getUrl($url);
-			if(empty($output))
-				return "";
+			log::getSingleton()->writeData("output:".$output);
+
 			$ret =$json_decode($output);
 			//log start
 			log::getSingleton()->writeData("getUrlRet:".var_export($ret));
