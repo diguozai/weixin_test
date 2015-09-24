@@ -29,7 +29,7 @@
 			$postStr  = json_encode($jsonobj);
 			log::getSingleton()->writeData("menuRet:".$postStr);
 			$output = curl::postUrl($url,$postStr );
-			
+			log::getSingleton()->writeData("menuRet:".$output);
 			$ret = json_decode($output);
 			if(isset($ret->errcode) && $ret->errcode == 0)
 			{
