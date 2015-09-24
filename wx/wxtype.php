@@ -30,6 +30,7 @@
 							<CreateTime>%s</CreateTime>
 							<MsgType><![CDATA[text]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
+							<FuncFlag>0</FuncFlag>
 							</xml>");
 
 	define("WX_XML_IMAGE_SEND","<xml>

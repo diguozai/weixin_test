@@ -19,10 +19,11 @@ class wechatCallbackapiTest
 	public function valid()
     {
         // $echoStr = $_GET["echostr"];
-
-         if($this->checkSignature())
+        // $this->responseMsg();
+        // return;
+          if($this->checkSignature())
         {
-             $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+              $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
 //             $postStr = "<xml><ToUserName><![CDATA[gh_afaae689af83]]></ToUserName>
 // <FromUserName><![CDATA[oNLzbvm5ccAl0q7QWyDOo6nqXp88]]></FromUserName>
 // <CreateTime>1443084773</CreateTime>
@@ -30,8 +31,9 @@ class wechatCallbackapiTest
 // <Content><![CDATA[1]]></Content>
 // <MsgId>6198001905600890285</MsgId>
 // </xml>";
+            log::getSingleton()->writeData($postStr);
             $obj = wxfactory::getobjbydata_recv($postStr);
-            $this->responseSameType($obj);
+             $this->responseSameType($obj);
 		// $me = new menu();
 		// $me->postMenu("menu/create");
  		    
@@ -44,6 +46,7 @@ class wechatCallbackapiTest
             if ($obj->MsgType == WX_TEXT)
             {
                 $msg = "你发的消息是:".$obj->Content."\r\n"."你好啊，baby～～";
+                log::getSingleton()->writeData($msg);
                 $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,$msg);
                 $sendText = $objSend->getSendString();
@@ -96,8 +99,14 @@ class wechatCallbackapiTest
     public function responseMsg()
     {
 		//get post data, May be due to the different environments
-		$postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-
+		 $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+//         $postStr = "<xml><ToUserName><![CDATA[gh_afaae689af83]]></ToUserName>
+// <FromUserName><![CDATA[oNLzbvm5ccAl0q7QWyDOo6nqXp88]]></FromUserName>
+// <CreateTime>1443084773</CreateTime>
+// <MsgType><![CDATA[text]]></MsgType>
+// <Content><![CDATA[1]]></Content>
+// <MsgId>6198001905600890285</MsgId>
+// </xml>";
       	//extract post data
 		if (!empty($postStr)){
                 /* libxml_disable_entity_loader is to prevent XML eXternal Entity Injection,
