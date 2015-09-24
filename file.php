@@ -1,5 +1,13 @@
 <?php
-    
+	if(!defined("__FILE_PHP_"))
+	{
+		 define("__FILE_PHP_", "__file_php_");
+	}
+	else
+	{
+		return;
+	}
+
 	class file
 {
 

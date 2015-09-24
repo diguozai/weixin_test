@@ -1,7 +1,9 @@
 
 <?php
-	include 'token.php';
-	include 'log.php';
+	include 'file.php';
+	// include 'file.php';
+	//include 'token.php';
+	//include 'log.php';
 	define(MENU_URL,"https://api.weixin.qq.com/cgi-bin/%s?access_token=%s");
 	class menu
 	{
@@ -13,7 +15,7 @@
 			log::getSingleton()->writeData("menuUrl:".var_export($ret));
 			$ret = curl::getUrl($url);
 			log::getSingleton()->writeData("menuRet:".var_export($ret));
-			if(isset($ret['errcode'] && $ret['errcode'] == 0)
+			if(isset($ret['errcode']) && $ret['errcode'] == 0)
 			{
 				return true;
 			}
