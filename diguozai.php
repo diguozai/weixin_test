@@ -24,12 +24,13 @@ class wechatCallbackapiTest
           if($this->checkSignature())
         {
               $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-//             $postStr = "<xml><ToUserName><![CDATA[gh_afaae689af83]]></ToUserName>
+// $postStr="<xml><ToUserName><![CDATA[gh_afaae689af83]]></ToUserName>
 // <FromUserName><![CDATA[oNLzbvm5ccAl0q7QWyDOo6nqXp88]]></FromUserName>
-// <CreateTime>1443084773</CreateTime>
-// <MsgType><![CDATA[text]]></MsgType>
-// <Content><![CDATA[1]]></Content>
-// <MsgId>6198001905600890285</MsgId>
+// <CreateTime>1443089694</CreateTime>
+// <MsgType><![CDATA[image]]></MsgType>
+// <PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz/AuCC6Hpheh3rwbOVbrNV2CTgeJA6DdJbdjicv50hHavyrnhvFRVTvvQGC9iccqJOlAibydqGhNenj59pHSiaHzK4sA/0]]></PicUrl>
+// <MsgId>6198023041134955513</MsgId>
+// <MediaId><![CDATA[XfP0fRrPj_RWxgU1sIBSg17v5l62zi9q1Yekgas1SEjDhRUDZDFlhZkWZDPmM90l]]></MediaId>
 // </xml>";
             log::getSingleton()->writeData($postStr);
             $obj = wxfactory::getobjbydata_recv($postStr);
@@ -54,43 +55,44 @@ class wechatCallbackapiTest
             }   
             else if($obj->MsgType == WX_IMAGE)
             {
+                echo "hellpo";
                 $objSend = new wxtext_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是一张图片");
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),"text","你发的是一张图片");
                 $sendText = $objSend->getSendString();
                 echo $sendText;
             }
             else if($obj->MsgType == WX_VOICE)
             {
                 $objSend = new wxtext_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是语音");
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),"text","你发的是语音");
                 $sendText = $objSend->getSendString();
                 echo $sendText;
             }
             else if($obj->MsgType == WX_VIDEO)
             {
                 $objSend = new wxtext_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是视频");
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),"text","你发的是视频");
                 $sendText = $objSend->getSendString();
                 echo $sendText;
             }
             else if($obj->MsgType == WX_SHORTVIDEO)
             {
                $objSend = new wxtext_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是短视频");
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),"text","你发的是短视频");
                 $sendText = $objSend->getSendString();
                 echo $sendText;
             }
             else if($obj->MsgType == WX_LOCATION)
             {
                 $objSend = new wxtext_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是位置");
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),"text","你发的是位置");
                 $sendText = $objSend->getSendString();
                 echo $sendText;
             }
             else if($obj->MsgType == WX_LINK)
             {
                 $objSend = new wxtext_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的链接");
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),"text","你发的链接");
                 $sendText = $objSend->getSendString();
                 echo $sendText;
             }
