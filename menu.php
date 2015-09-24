@@ -12,9 +12,10 @@
 			$tok = token::getToken(); 		
 			$url = sprintf(MENU_URL,$type,$token);	
 			log::getSingleton()->writeData("menuUrl:".$url);
-			$ret = curl::getUrl($url);
-			log::getSingleton()->writeData("menuRet:".$ret);
-			if(isset($ret['errcode']) && $ret['errcode'] == 0)
+			$output = curl::getUrl($url);
+			log::getSingleton()->writeData("menuRet:".$output);
+			$ret = json_decode($output);
+			if(isset($ret->errcode) && $ret->errcode == 0)
 			{
 				return true;
 			}

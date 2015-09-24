@@ -22,10 +22,10 @@ class wechatCallbackapiTest
         	// echo $echoStr;
           //  $this->responseMsg();
 		// log::getSingleton()->writeData("1");
-		log::getSingleton()->writeData($echoStr);
+		// log::getSingleton()->writeData($echoStr);
 		$me = new menu();
 		$me->postMenu("menu/create");
- 		log::getSingleton()->writeData($echoStr);
+ 		// log::getSingleton()->writeData($echoStr);
 	       	exit;
         }
     }

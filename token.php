@@ -11,19 +11,19 @@
 		public static function getToken($appid=TK_APPID,$secret=TK_SECERET)
 		{
 			$url = sprintf(TOKEN_URL,$appid,$secret);
-			log::getSingleton()->writeData("getUrlRet:".$url);
+			log::getSingleton()->writeData("getUrlRet:".$url."\r\n");
 			$output = curl::getUrl($url);
-			log::getSingleton()->writeData("output:".$output);
+			log::getSingleton()->writeData("output:".$output."\r\n");
 
 			$ret =$json_decode($output);
 			//log start
-			log::getSingleton()->writeData("getUrlRet:".var_export($ret));
+			// log::getSingleton()->writeData("getUrlRet:".var_export($ret));
 			//log end
-			if(!isset($ret[errcode]))
+			if(!isset($ret->errcode))
 			{
 				return "";
 			}
-			return $ret['access_token'];
+			return $ret->access_token;
 			// {"access_token":"ACCESS_TOKEN","expires_in":7200}			
 
 		} 
