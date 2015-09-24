@@ -17,7 +17,7 @@
 		{
 			if(!isset(self::$instance))
 			{
-				self::$instance = new file("log/log.txt","a+");
+				self::$instance = new file(dirname(__FILE__)."/log/log.txt","a+");
 			}
 			return self::$instance;
 		}

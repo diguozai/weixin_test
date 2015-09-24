@@ -4,7 +4,10 @@
   */
 
 //define your token
+include dirname(__FILE__).'/log.php';
+//include dirname(__FILE__).'/menu.php';
 define("TOKEN", "diguozai");
+
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 
@@ -17,8 +20,13 @@ class wechatCallbackapiTest
         //valid signature , option
         if($this->checkSignature()){
         	// echo $echoStr;
-            $this->responseMsg();
-        	exit;
+          //  $this->responseMsg();
+		log::getSingleton()->writeData("1");
+		log::getSingleton()->writeData($echoStr);
+		$me = new menu();
+		$me->postMenu("menu/create");
+ 		log::getSingleton()->writeData($echoStr);
+	       	exit;
         }
     }
 
@@ -48,7 +56,7 @@ class wechatCallbackapiTest
 				if(!empty( $keyword ))
                 {
               		$msgType = "text";
-                	$contentStr = "Welcome to wechat world!";
+                	$contentStr = "Welcome to diguozai world!";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
                 }else{
