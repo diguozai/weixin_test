@@ -1,19 +1,20 @@
 <?php
-	
-	include 'wxtype.php'
+	if(!defined("_WXRECV_PHP_"))
+	{
+		 define("_WXRECV_PHP_", "");
+	}
+	else
+	{
+		return;
+	}
+	include 'wxtype.php';
 
 
 	class wxbase_recv
 	{
 		
-		protect function init($data,$datatype)
+		protected function init($obj)
 		{
-			$obj = null;
-			if($datatype == XML)
-			{
-			    $obj = simplexml_load_string($data);
-			}
-			$obj = $data;
 			if(isset($obj))
 			{
 				$this->ToUserName 	= $obj->ToUserName;
@@ -47,7 +48,7 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($data,$datatype=XML)
 		{
 			$obj = parent::init($data,$datatype);
 			$this->Content  = $obj->Content ;
@@ -70,14 +71,14 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->PicUrl  = $obj->PicUrl  ;
 			$this->MediaId = $obj->MediaId ;
 		} 
 		public $PicUrl;					//图片链接
-		public $MediaId					//图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
+		public $MediaId;					//图片消息媒体id，可以调用多媒体文件下载接口拉取数据。
 
 	};
 
@@ -93,9 +94,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->MediaId  = $obj->MediaId  ;
 			$this->Format   = $obj->Format ;
 		} 
@@ -116,9 +117,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
 			$this->ThumbMediaId   = $obj->ThumbMediaId ;
 		} 
@@ -130,9 +131,9 @@
 	class wxshortvideo_recv extends wxbase_recv
 	{
 		
-		function __construct($data,$datatype=XML)
+		function __construct($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
 			$this->ThumbMediaId   = $obj->ThumbMediaId ;
 		}
@@ -157,9 +158,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
 			$this->ThumbMediaId   = $obj->ThumbMediaId ;
 		} 
@@ -182,9 +183,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
 			$this->ThumbMediaId   = $obj->ThumbMediaId ;
 		} 
@@ -206,9 +207,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->Event   = $obj->Event ;
 		} 
 		public $Event;		//事件类型，subscribe(订阅)、unsubscribe(取消订阅)
@@ -232,9 +233,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
 			$this->Ticket     = $obj->Ticket ;
 		} 
@@ -253,9 +254,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
 			$this->Ticket     = $obj->Ticket ;
 		} 
@@ -274,9 +275,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->Latitude   	 = $obj->Latitude ;
 			$this->Longitude     = $obj->Longitude ;
 			$this->Precision     = $obj->Precision ;
@@ -297,9 +298,9 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
 		} 
 		public $EventKey;	
@@ -318,27 +319,15 @@
 		{
 		}
 
-		protect function init($data,$datatype=XML)
+		protected function init($obj)
 		{
-			$obj = parent::init($data,$datatype);
+			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
 		} 
 		public $EventKey;	
 
 	};
 	//微信的event-----------------end
-
-
-
-
-
-
-
-
-
-
-	
-	
 
 
 ?>

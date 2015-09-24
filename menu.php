@@ -9,12 +9,6 @@
 		 // https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN
 		public  function postMenu($type)
 		{
-			// $str = $this->getMenuJson();
-			// $jsonobj = json_decode($str);
-			// // var_dump($jsonobj);
-			// $str1 = json_encode($jsonobj);
-			// print $str1;
-			// return ;
 			$tok = token::getToken(); 		
 			if($tok == "")
 			{

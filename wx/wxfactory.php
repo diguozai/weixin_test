@@ -1,49 +1,64 @@
 <?php
-	include 'wxtype.php'
-	include 'wxrecv.php'
+	if(!defined("_WXFACTORY_PHP_"))
+	{
+		 define("_WXFACTORY_PHP_", "");
+	}
+	else
+	{
+		return;
+	}
+	include dirname(__FILE__).'/wxtype.php';
+	include dirname(__FILE__).'/wxrecv.php';
+    include dirname(dirname(__FILE__)).'/log.php';
+
 	class wxfactory
 	{
-		static function getobj_recv(type)
+		public static function getobj_recv($type)
 		{
 			$obj = null;
-			if (type == WX_TEXT)
+			if ($type == WX_TEXT)
 			{
-				$obj = new wxtext();
+				$obj = new wxtext_recv();
 			}
-			else if(type == WX_IMAGE)
+			else if($type == WX_IMAGE)
 			{
-				$obj = new wximage();
+				$obj = new wximage_recv();
 			}
-			else if(type == WX_VOICE)
+			else if($type == WX_VOICE)
 			{
-				$obj = new wxvoice();
+				$obj = new wxvoice_recv();
 			}
-			else if(type == WX_VIDEO)
+			else if($type == WX_VIDEO)
 			{
-				$obj = new wxvideo();
+				$obj = new wxvideo_recv();
 			}
-			else if(type == WX_SHORTVIDEO)
+			else if($type == WX_SHORTVIDEO)
 			{
-				$obj = new wxshortvideo();
+				$obj = new wxshortvideo_recv();
 			}
-			else if(type == WX_LOCATION)
+			else if($type == WX_LOCATION)
 			{
-				$obj = new wxlocation();
+				$obj = new wxlocation_recv();
 			}
-			else if(type == WX_LINK)
+			else if($type == WX_LINK)
 			{
-				$obj = new wxlink();
+				$obj = new wxlink_recv();
 			}
+			return $obj;
+		}
+		public static function getobjbydata_recv($data)
+		{
+			$xmlObj = simplexml_load_string($data);
+			log::getSingleton()->writeData($data);
+			if(!isset($xmlObj))
+				return null;
+			$obj = wxfactory::getobj_recv($xmlObj->MsgType);
+			$obj->init($data);
 			return $obj;
 		}
 	}
 
-	static function getobjbydata_recv($data,$datatype=XML)
-	{
-		$obj = wxfactory::getobj_recv();
-		$obj->init($data,$datatype);
-		return $obj;
-	}
+	
  
 ?>
 

@@ -1,5 +1,12 @@
 <?php
-
+	if(!defined("_WXTYPE_PHP_"))
+	{
+		 define("_WXTYPE_PHP_", "");
+	}
+	else
+	{
+		return;
+	}
 	define("WX_TEXT","text");
 	define("WX_IMAGE","image");
 	define("WX_VOICE","voice");
@@ -9,8 +16,6 @@
 	define("WX_LINK","link");
 	define("WX_NEWS", "news");
 	define("WX_MUSIC","music");
-	define("WX_EVENT","event");
-	
 	define("WX_EVENT","event");
 
 	define("XML", 1);

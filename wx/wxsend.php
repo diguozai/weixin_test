@@ -1,6 +1,13 @@
 <?php
 	
-
+	if(!defined("_WXSEND_PHP_"))
+	{
+		 define("_WXSEND_PHP_", "");
+	}
+	else
+	{
+		return;
+	}
 
 	class wxbase_send
 	{
@@ -98,7 +105,7 @@
 								$item->description,
 								$item->picurl,
 								$item->url
-								)
+								);
 					$middlestr=$middlestr.$itemstr;
 				}
 
@@ -109,6 +116,14 @@
 
 
 			}
+		}
+		function __construct()
+		{
+			$this->ToUserName = "";
+			$this->FromUserName = "";
+			$this->CreateTime = "";
+			$this->MsgType = "";
+
 		}
 		public $ToUserName;					//开发者微信号
 		public $FromUserName;				//发送方帐号（一个OpenID）
@@ -121,7 +136,19 @@
 	class wxtext_send extends wxbase_send
 	{
 		
-		public $Content	;		
+		public $Content	;
+		function __construct()
+		{
+			$this->Content = "";
+		}
+		public function init($ToUserName,$FromUserName,$CreateTime,$MsgType,$Content)
+		{
+			$this->ToUserName = $ToUserName;
+			$this->FromUserName = $FromUserName;
+			$this->CreateTime	= $CreateTime;
+			$this->MsgType 		= $MsgType;
+			$this->Content 		= $Content;
+		}		
 		
 
 	};
@@ -129,8 +156,19 @@
 	class wximage_send extends wxbase_send
 	{
 		
-		public $MediaId					
-
+		public $MediaId	;
+		function __construct()
+		{
+			$this->MediaId = "";
+		}				
+		public function init($ToUserName,$FromUserName,$CreateTime,$MsgType,$MediaId)
+		{
+			$this->ToUserName = $ToUserName;
+			$this->FromUserName = $FromUserName;
+			$this->CreateTime	= $CreateTime;
+			$this->MsgType 		= $MsgType;
+			$this->MediaId 		= $MediaId;
+		}
 	};
 
 	class wxvoice_send extends wxbase_send
@@ -138,6 +176,18 @@
 		
 
 		public $MediaId ;	
+		function __construct()
+		{
+			$this->MediaId = "";
+		}		
+		public function init($ToUserName,$FromUserName,$CreateTime,$MsgType,$MediaId)
+		{
+			$this->ToUserName = $ToUserName;
+			$this->FromUserName = $FromUserName;
+			$this->CreateTime	= $CreateTime;
+			$this->MsgType 		= $MsgType;
+			$this->MediaId 		= $MediaId;
+		}
 
 	};
 
@@ -146,7 +196,23 @@
 	
 		public $MediaId;			
 		public $Title;		
-		public $Description;		
+		public $Description;	
+		function __construct()
+		{
+			$this->MediaId = "";
+			$this->Title = "";
+			$this->Description = "";
+		}		
+		public function init($ToUserName,$FromUserName,$CreateTime,$MsgType,$MediaId,$Title,$Description)
+		{
+			$this->ToUserName = $ToUserName;
+			$this->FromUserName = $FromUserName;
+			$this->CreateTime	= $CreateTime;
+			$this->MsgType 		= $MsgType;
+			$this->MediaId 		= $MediaId;
+			$this->Title        = $Title;
+			$this->Description        = $Description;
+		}	
 
 	};
 
@@ -155,22 +221,65 @@
 	
 		public $MediaId;			
 		public $Title;		
-		public $Description;		
+		public $Description;	
+		function __construct()
+		{
+			$this->MediaId = "";
+			$this->Title = "";
+			$this->Description = "";
+		}		
+		public function init($ToUserName,$FromUserName,$CreateTime,$MsgType,$MediaId,$Title,$Description)
+		{
+			$this->ToUserName = $ToUserName;
+			$this->FromUserName = $FromUserName;
+			$this->CreateTime	= $CreateTime;
+			$this->MsgType 		= $MsgType;
+			$this->MediaId 		= $MediaId;
+			$this->Title        = $Title;
+			$this->Description        = $Description;
+		}		
 
 	};
 
 	class  wxnews_item
 		{
+
 			public $title;
 			public $description;
 			public $picurl;
 			public $url;
+			function __construct()
+			{
+				$this->title ="";
+				$this->description = "";
+				$this->picurl = "";
+				$this->url = "";
+				
+			}
 		};
 	class wxnews_send extends wxbase_send
 	{
-	
+		
 		public $ArticleCount;	
-		public $items;		
+		public $items;	
+
+		function __construct()
+		{
+			$this->ArticleCount = 0;
+			$this->items = array();
+		}
+		public function init($ToUserName,$FromUserName,$CreateTime,$MsgType)
+		{
+			$this->ToUserName = $ToUserName;
+			$this->FromUserName = $FromUserName;
+			$this->CreateTime	= $CreateTime;
+			$this->MsgType 		= $MsgType;
+		}	
+		public function addItem($item)
+		{
+			$items[$this->ArticleCount] = $item;
+			$this->ArticleCount ++;
+		}
 
 	};
 	
