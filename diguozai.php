@@ -21,7 +21,7 @@ class wechatCallbackapiTest
         if($this->checkSignature()){
         	// echo $echoStr;
           //  $this->responseMsg();
-		log::getSingleton()->writeData("1");
+		// log::getSingleton()->writeData("1");
 		log::getSingleton()->writeData($echoStr);
 		$me = new menu();
 		$me->postMenu("menu/create");

@@ -11,9 +11,9 @@
 		{
 			$tok = token::getToken(); 		
 			$url = sprintf(MENU_URL,$type,$token);	
-			log::getSingleton()->writeData("menuUrl:".var_export($ret));
+			log::getSingleton()->writeData("menuUrl:".$url);
 			$ret = curl::getUrl($url);
-			log::getSingleton()->writeData("menuRet:".var_export($ret));
+			log::getSingleton()->writeData("menuRet:".$ret);
 			if(isset($ret['errcode']) && $ret['errcode'] == 0)
 			{
 				return true;
