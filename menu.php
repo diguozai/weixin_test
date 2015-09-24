@@ -45,25 +45,25 @@
 			     "button":[
 			     {	
 			          "type":"click",
-			          "name":"今日歌曲",
+			          "name":"x1",
 			          "key":"V1001_TODAY_MUSIC"
 			      },
 			      {
-			           "name":"菜单",
+			           "name":"menu",
 			           "sub_button":[
 			           {	
 			               "type":"view",
-			               "name":"搜索",
+			               "name":"x2",
 			               "url":"http://www.soso.com/"
 			            },
 			            {
 			               "type":"view",
-			               "name":"视频",
+			               "name":"x3",
 			               "url":"http://v.qq.com/"
 			            },
 			            {
 			               "type":"click",
-			               "name":"赞一下我们",
+			               "name":"x4",
 			               "key":"V1001_GOOD"
 			            }]
 			       }]
