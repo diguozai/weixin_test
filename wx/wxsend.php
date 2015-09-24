@@ -18,7 +18,7 @@
 			if($this->MsgType == WX_TEXT)
 			{
 
-				$str = sprintf($fmt,
+				$str = sprintf(WX_XML_TEXT_SEND,
 					$this->ToUserName,
 					$this->FromUserName,
 					$this->CreateTime,

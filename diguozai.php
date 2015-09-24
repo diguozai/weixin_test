@@ -45,7 +45,7 @@ class wechatCallbackapiTest
             $objSend = null;
             if ($obj->MsgType == WX_TEXT)
             {
-                $msg = "你发的消息是:".$obj->Content."\r\n"."你好啊，baby～～";
+                $msg = "你发的消息是:".$obj->Content."你好啊，baby～～";
                 log::getSingleton()->writeData($msg);
                 $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,$msg);
