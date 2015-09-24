@@ -52,14 +52,14 @@
 			           "name":"menu",
 			           "sub_button":[
 			           {	
-			               "type":"view",
+			               "type":"click",
 			               "name":"x2",
-			               "url":"http://www.soso.com/"
+			               "key":"V1001_TODAY_MUSIC2"
 			            },
 			            {
-			               "type":"view",
+			               "type":"click",
 			               "name":"x3",
-			               "url":"http://v.qq.com/"
+			               "key":"V1001_TODAY_MUSIC4"
 			            },
 			            {
 			               "type":"click",
