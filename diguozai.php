@@ -21,17 +21,9 @@ class wechatCallbackapiTest
         // $echoStr = $_GET["echostr"];
         // $this->responseMsg();
         // return;
-          if($this->checkSignature())
+         if($this->checkSignature())
         {
-              $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
-// $postStr="<xml><ToUserName><![CDATA[gh_afaae689af83]]></ToUserName>
-// <FromUserName><![CDATA[oNLzbvm5ccAl0q7QWyDOo6nqXp88]]></FromUserName>
-// <CreateTime>1443089694</CreateTime>
-// <MsgType><![CDATA[image]]></MsgType>
-// <PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz/AuCC6Hpheh3rwbOVbrNV2CTgeJA6DdJbdjicv50hHavyrnhvFRVTvvQGC9iccqJOlAibydqGhNenj59pHSiaHzK4sA/0]]></PicUrl>
-// <MsgId>6198023041134955513</MsgId>
-// <MediaId><![CDATA[XfP0fRrPj_RWxgU1sIBSg17v5l62zi9q1Yekgas1SEjDhRUDZDFlhZkWZDPmM90l]]></MediaId>
-// </xml>";
+             $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
             log::getSingleton()->writeData($postStr);
             $obj = wxfactory::getobjbydata_recv($postStr);
              $this->responseSameType($obj);

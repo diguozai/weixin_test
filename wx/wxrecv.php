@@ -131,16 +131,15 @@
 	class wxshortvideo_recv extends wxbase_recv
 	{
 		
-		function __construct($obj)
+		function __destruct()
+		{
+		}
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
 			$this->ThumbMediaId   = $obj->ThumbMediaId ;
-		}
-
-		function __destruct()
-		{
-		}
+		} 
 		public $MediaId;		//视频消息媒体id，可以调用多媒体文件下载接口拉取数据。
 		public $ThumbMediaId;	//视频消息缩略图的媒体id，可以调用多媒体文件下载接口拉取数据。
 
