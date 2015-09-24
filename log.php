@@ -11,7 +11,14 @@
 
 	class log
 	{
-
+		function __construct()
+		{
+			file_put_contents(dirname(__FILE__)."/log/log.txt", "log __construct");
+		}
+		function __destruct()
+		{
+			file_put_contents(dirname(__FILE__)."/log/log.txt", "log __destruct");
+		}
 		public  function writeData($data)
 		{
 			if(!isset($instance))
