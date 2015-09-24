@@ -8,6 +8,7 @@
 	{
 		return;
 	}
+	include 'wxtype.php';
 
 	class wxbase_send
 	{
@@ -16,7 +17,8 @@
 			$str = "";
 			if($this->MsgType == WX_TEXT)
 			{
-				$str = sprintf(WX_XML_TEXT_SEND,
+
+				$str = sprintf($fmt,
 					$this->ToUserName,
 					$this->FromUserName,
 					$this->CreateTime,
@@ -116,6 +118,7 @@
 
 
 			}
+			return $str;
 		}
 		function __construct()
 		{

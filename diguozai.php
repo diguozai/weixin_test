@@ -7,7 +7,7 @@
 include dirname(__FILE__).'/log.php';
 include dirname(__FILE__).'/menu.php';
 include dirname(__FILE__).'/wx/wxfactory.php';
-// include dirname(__FILE__).'/wx/wxsend.php';
+ include dirname(__FILE__).'/wx/wxsend.php';
 include dirname(__FILE__).'/curl.php';
 define("TOKEN", "diguozai");
 
@@ -18,10 +18,18 @@ class wechatCallbackapiTest
 {
 	public function valid()
     {
-        $echoStr = $_GET["echostr"];
+        // $echoStr = $_GET["echostr"];
 
-        if($this->checkSignature()){
-            $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+         if($this->checkSignature())
+        {
+             $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+//             $postStr = "<xml><ToUserName><![CDATA[gh_afaae689af83]]></ToUserName>
+// <FromUserName><![CDATA[oNLzbvm5ccAl0q7QWyDOo6nqXp88]]></FromUserName>
+// <CreateTime>1443084773</CreateTime>
+// <MsgType><![CDATA[text]]></MsgType>
+// <Content><![CDATA[1]]></Content>
+// <MsgId>6198001905600890285</MsgId>
+// </xml>";
             $obj = wxfactory::getobjbydata_recv($postStr);
             $this->responseSameType($obj);
 		// $me = new menu();
@@ -35,52 +43,53 @@ class wechatCallbackapiTest
             $objSend = null;
             if ($obj->MsgType == WX_TEXT)
             {
-                $objSend = new wxtxt_send();
-                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的消息是:".$obj->Content."\r\n"."你好啊，baby～～");
+                $msg = "你发的消息是:".$obj->Content."\r\n"."你好啊，baby～～";
+                $objSend = new wxtext_send();
+                $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,$msg);
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }   
             else if($obj->MsgType == WX_IMAGE)
             {
-                $objSend = new wxtxt_send();
+                $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是一张图片");
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }
             else if($obj->MsgType == WX_VOICE)
             {
-                $objSend = new wxtxt_send();
+                $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是语音");
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }
             else if($obj->MsgType == WX_VIDEO)
             {
-                $objSend = new wxtxt_send();
+                $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是视频");
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }
             else if($obj->MsgType == WX_SHORTVIDEO)
             {
-               $objSend = new wxtxt_send();
+               $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是短视频");
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }
             else if($obj->MsgType == WX_LOCATION)
             {
-                $objSend = new wxtxt_send();
+                $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的是位置");
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }
             else if($obj->MsgType == WX_LINK)
             {
-                $objSend = new wxtxt_send();
+                $objSend = new wxtext_send();
                 $objSend->init($obj->FromUserName,$obj->ToUserName,time(),$obj->MsgType,"你发的链接");
                 $sendText = $objSend->getSendString();
-                echo "$sendText";
+                echo $sendText;
             }
         
     }

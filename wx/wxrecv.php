@@ -48,7 +48,7 @@
 		{
 		}
 
-		protected function init($data,$datatype=XML)
+		public function init($data,$datatype=XML)
 		{
 			$obj = parent::init($data,$datatype);
 			$this->Content  = $obj->Content ;
@@ -71,7 +71,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->PicUrl  = $obj->PicUrl  ;
@@ -94,7 +94,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->MediaId  = $obj->MediaId  ;
@@ -117,7 +117,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
@@ -158,7 +158,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
@@ -183,7 +183,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->MediaId 		  = $obj->MediaId  ;
@@ -207,7 +207,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->Event   = $obj->Event ;
@@ -233,7 +233,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
@@ -254,7 +254,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
@@ -275,7 +275,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->Latitude   	 = $obj->Latitude ;
@@ -298,7 +298,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;
@@ -319,7 +319,7 @@
 		{
 		}
 
-		protected function init($obj)
+		public function init($obj)
 		{
 			$obj = parent::init($obj);
 			$this->EventKey   = $obj->EventKey ;

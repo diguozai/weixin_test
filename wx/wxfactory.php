@@ -53,7 +53,7 @@
 			if(!isset($xmlObj))
 				return null;
 			$obj = wxfactory::getobj_recv($xmlObj->MsgType);
-			$obj->init($data);
+			$obj->init($xmlObj);
 			return $obj;
 		}
 	}
